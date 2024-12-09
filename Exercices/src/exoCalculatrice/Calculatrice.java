@@ -1,5 +1,7 @@
 package exoCalculatrice;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
@@ -16,16 +18,19 @@ public class Calculatrice {
         Calculator additionne = (a,b) -> a+b ;
         Calculator soustrait = (a,b) -> a-b ;
 
+        Map<String,Double> opérations = new HashMap<>();
+        opérations.put("multiplie",multiplie.calculate(Ra,Rb));
+        opérations.put("divise",divise.calculate(Ra,Rb));
+        opérations.put("additionne",additionne.calculate(Ra,Rb));
+        opérations.put("multiplie",soustrait.calculate(Ra,Rb));
+
 
         Consumer<String> printMessage = (message)->{
             System.out.println(message);
         };
         System.out.println("Bonjour, merci de faire votre choix : ");
 
-
-
         while(choix!=0){
-
             System.out.println("1. Multiplication.\n" +
                     "2. Division.\n" +
                     "3. Addition.\n" +
@@ -38,6 +43,7 @@ public class Calculatrice {
                 case 1->{
                     bloup(sc,Ra,Rb);
                     reponse = multiplie.calculate(Ra,Rb);
+                    System.out.println(reponse);
                     printMessage.accept(Ra + " x " + Rb + " = " + reponse);
                 }
                 case 2->{
@@ -60,9 +66,14 @@ public class Calculatrice {
                     reponse = soustrait.calculate(Ra,Rb);
                     printMessage.accept(Ra + " - " + Rb + " = " + reponse);
                 }
+                case 999999->{
+for (int ir=0; ir<1000000;ir++){
+    System.out.println("SECRET DEFENSE!!!SECRET DEFENSE!!!SECRET DEFENSE!!!SECRET DEFENSE!!!SECRET DEFENSE!!!SECRET DEFENSE!!!SECRET DEFENSE!!!");
+                    }
+                }
                 default ->{
                     if (choix!=0){
-                        System.out.println("nique ta grand mère.");
+                        System.out.println("Nique ta grand mère.");
                     }else{
                         System.out.println("Au revoir.");
                     }

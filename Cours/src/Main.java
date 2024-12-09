@@ -13,9 +13,6 @@ public class Main {
         fruits.sort(String::compareTo);
         System.out.println("Liste triée :"+ fruits + "\n");
 
-
-
-
         System.out.println("Cours Function :");
         Function<String,Integer> stringLengthFunction = str -> str.length();
 //        Function<String,Integer> stringLengthFunction = String::length;
