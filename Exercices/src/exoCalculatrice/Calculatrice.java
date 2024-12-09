@@ -28,18 +28,18 @@ public class Calculatrice {
 
             switch(choix){
                 case 1->{
-                    System.out.println("enter the first number");
+                    System.out.println("Entrez la première valeur : ");
                     Ra=sc.nextDouble();
-                    System.out.println("enter the second number");
+                    System.out.println("Entrez la deuxième valeur : ");
                     Rb=sc.nextDouble();
                     sc.nextLine();
                     reponse = multiplie.calculate(Ra,Rb);
                     System.out.println(Ra + " x " + Rb + " = " + reponse);
                 }
                 case 2->{
-                    System.out.println("enter the first number");
+                    System.out.println("Entrez la première valeur : ");
                     Ra=sc.nextDouble();
-                    System.out.println("enter the second number");
+                    System.out.println("Entrez la deuxième valeur : ");
                     Rb=sc.nextDouble();
                     sc.nextLine();
                     while(Rb==0){
@@ -51,18 +51,18 @@ public class Calculatrice {
                     System.out.println(Ra + " / " + Rb + " = " + reponse);
                 }
                 case 3->{
-                    System.out.println("enter the first number");
+                    System.out.println("Entrez la première valeur : ");
                     Ra=sc.nextDouble();
-                    System.out.println("enter the second number");
+                    System.out.println("Entrez la deuxième valeur : ");
                     Rb=sc.nextDouble();
                     sc.nextLine();
                     reponse = additionne.calculate(Ra,Rb);
                     System.out.println(Ra + " + " + Rb + " = " + reponse);
                 }
                 case 4->{
-                    System.out.println("enter the first number");
+                    System.out.println("Entrez la première valeur : ");
                     Ra=sc.nextDouble();
-                    System.out.println("enter the second number");
+                    System.out.println("Entrez la deuxième valeur : ");
                     Rb=sc.nextDouble();
                     sc.nextLine();
                     reponse = soustrait.calculate(Ra,Rb);
