@@ -1,8 +1,12 @@
 package exoCalculatrice;
 
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 public class Calculatrice {
+    static double reponse=0;
+    static int choix = 12;
+    static double Ra,Rb;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,10 +16,14 @@ public class Calculatrice {
         Calculator additionne = (a,b) -> a+b ;
         Calculator soustrait = (a,b) -> a-b ;
 
-    double reponse=0;
-    int choix = 12;
-    double Ra,Rb;
+
+        Consumer<String> printMessage = (message)->{
+            System.out.println(message);
+        };
         System.out.println("Bonjour, merci de faire votre choix : ");
+
+
+
         while(choix!=0){
 
             System.out.println("1. Multiplication.\n" +
@@ -28,45 +36,29 @@ public class Calculatrice {
 
             switch(choix){
                 case 1->{
-                    System.out.println("Entrez la première valeur : ");
-                    Ra=sc.nextDouble();
-                    System.out.println("Entrez la deuxième valeur : ");
-                    Rb=sc.nextDouble();
-                    sc.nextLine();
+                    bloup(sc,Ra,Rb);
                     reponse = multiplie.calculate(Ra,Rb);
-                    System.out.println(Ra + " x " + Rb + " = " + reponse);
+                    printMessage.accept(Ra + " x " + Rb + " = " + reponse);
                 }
                 case 2->{
-                    System.out.println("Entrez la première valeur : ");
-                    Ra=sc.nextDouble();
-                    System.out.println("Entrez la deuxième valeur : ");
-                    Rb=sc.nextDouble();
-                    sc.nextLine();
+                    bloup(sc,Ra,Rb);
                     while(Rb==0){
-                        System.out.println("Tu va réecrire la 2eme varibla sinon je te defonce");
+                        System.out.println("Tu va réecrire la 2eme variable sinon je te défonce");
                         Rb=sc.nextDouble();
                         sc.nextLine();
                     }
                     reponse = divise.calculate(Ra,Rb);
-                    System.out.println(Ra + " / " + Rb + " = " + reponse);
+                    printMessage.accept(Ra + " / " + Rb + " = " + reponse);
                 }
                 case 3->{
-                    System.out.println("Entrez la première valeur : ");
-                    Ra=sc.nextDouble();
-                    System.out.println("Entrez la deuxième valeur : ");
-                    Rb=sc.nextDouble();
-                    sc.nextLine();
+                    bloup(sc,Ra,Rb);
                     reponse = additionne.calculate(Ra,Rb);
-                    System.out.println(Ra + " + " + Rb + " = " + reponse);
+                    printMessage.accept(Ra + " + " + Rb + " = " + reponse);
                 }
                 case 4->{
-                    System.out.println("Entrez la première valeur : ");
-                    Ra=sc.nextDouble();
-                    System.out.println("Entrez la deuxième valeur : ");
-                    Rb=sc.nextDouble();
-                    sc.nextLine();
+                    bloup(sc,Ra,Rb);
                     reponse = soustrait.calculate(Ra,Rb);
-                    System.out.println(Ra + " - " + Rb + " = " + reponse);
+                    printMessage.accept(Ra + " - " + Rb + " = " + reponse);
                 }
                 default ->{
                     if (choix!=0){
@@ -81,4 +73,15 @@ public class Calculatrice {
 
 sc.close();
     }
+
+    public static void bloup(Scanner scanner, double a , double b){
+        System.out.println("Entrez la première valeur : ");
+        Ra=scanner.nextDouble();
+        System.out.println("Entrez la deuxième valeur : ");
+        Rb=scanner.nextDouble();
+        scanner.nextLine();
+    }
+
 }
+
+
