@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         String sCurrentLine;
         List<Film> films = new ArrayList<>();
-
-        String file = "C://Users//Administrateur//Downloads//Cours Java SE//Exercices//src//exoStream//films.csv";
+        System.out.println("Répertoire actuel : " + System.getProperty("user.dir"));
+        String file = "src/exoStream/films.csv";
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             br.readLine();
@@ -80,11 +80,17 @@ public class Main {
 
 //7. Questions avancées
 
-        
+//        films.stream().collect(Collectors.groupingBy(Film::getGenre, Collectors.minBy(Comparator.comparing(Film::getDateSortie))))
+//                .forEach((s, filmOptional) -> filmOptional.ifPresent((film)-> System.out.println("Film: " + s + " - " + film)));
 
+//films.stream().collect(Collectors.groupingBy(Film::getRealisateur, Collectors.counting())).entrySet()
+//        .stream()
+//        .filter(entry -> entry.getValue() > 50)
+//        .forEach(entry -> System.out.println("Réalisateur : " + entry.getKey() + " - Nombre de films : " + entry.getValue()));
 
-
-
+//        System.out.println("Nombre de places vendues entre 1990 et 2000 : " + films.stream().filter(film -> film.getDateSortie().isBefore(LocalDate.parse("2000-12-31"))
+//                && film.getDateSortie().isAfter(LocalDate.parse("1990-01-01")))
+//                .mapToLong(Film::getEntreeNombre).sum());
 
     }
 }
