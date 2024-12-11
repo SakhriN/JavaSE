@@ -60,12 +60,12 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
-                "titre='" + titre + '\'' +
-                ", dateSortie=" + dateSortie +
-                ", realisateur='" + realisateur + '\'' +
-                ", genre='" + genre + '\'' +
-                ", entreeNombre=" + entreeNombre +
-                '}';
+        return "Film :" +
+                "titre = " + titre + ',' +
+                " dateSortie = " + dateSortie +
+                ", realisateur = " + realisateur + ',' +
+                " genre = " + genre + ',' +
+                " entreeNombre = " + entreeNombre +
+                '.';
     }
 }
