@@ -39,28 +39,31 @@ public class Main {
 
 //        bouquins.stream().collect(Collectors.groupingBy(Books::getGenre)).forEach((genre, books) -> System.out.println(" Genre : " + genre + "\n" + books));
 
-//          bouquins.stream().min(Comparator.comparing(Books::getDateDePublication)).ifPresent(System.out::println);
+//        bouquins.stream().min(Comparator.comparing(Books::getDateDePublication)).ifPresent(System.out::println);
 
 //        bouquins.stream().filter(books -> books.getTitre().startsWith("Harry")).forEach(books -> System.out.println(books.getTitre()));
 
 //        System.out.println(" Prix Moyen des livres : " + bouquins.stream().filter(Books::isDisponible).collect(Collectors.averagingDouble(Books::getPrix)));
 
+
 //        bouquins.stream().sorted(Comparator.comparing(Books::getNombreDePages)).sorted(Comparator.comparing(Books::getPrix)).forEach(System.out::println);
+
+//        bouquins.stream().sorted(Comparator.comparingInt(Books::getNombreDePages).thenComparingDouble(Books::getPrix)).forEach(System.out::println);
 
 //        System.out.println((Integer) bouquins.stream().filter(books -> books.getGenre().equals("Fantasy")).mapToInt(Books::getNombreDePages).sum());
 
-//        bouquins.stream().max(Comparator.comparingDouble(Books::getPrix)).ifPresent(System.out::println);
+//        bouquins.stream().filter(Books::isDisponible).max(Comparator.comparingDouble(Books::getPrix)).ifPresent(System.out::println);
 
 //        bouquins.stream().collect(Collectors.groupingBy(Books::getAuteur, Collectors.counting())).entrySet().stream()
-//                .filter(livre-> livre.getValue()>17).forEach(entry->{
-//            System.out.println("Le meilleur auteur a son actif est : "+entry.getKey()+", avec " + entry.getValue() + " livres.");
-//        }
+//                .filter(livre-> livre.getValue()>17).forEach(livre->{
+//            System.out.println("Le meilleur auteur a son actif est : "+livre.getKey()+", avec " + livre.getValue() + " livres.");
+//        });
 
 //        bouquins.stream().collect(Collectors.groupingBy(Books::getGenre, Collectors.counting())).forEach((genre, count) -> {
 //            System.out.println("Nombre de liste dans le genre "+genre+" : "+count+" pages.\n");
 //        });
 
-//bouquins.stream().filter(books -> books.getPrix() < 10 && books.isDisponible()).forEach(books -> System.out.println(books));
+//        bouquins.stream().filter(books -> books.getPrix() < 10 && books.isDisponible()).forEach(books -> System.out.println(books));
 
 //        bouquins.stream().collect(Collectors.groupingBy(books -> books.getDateDePublication().getYear(), Collectors.summingLong(Books::getNombreDePages))).forEach((year, books)-> System.out.println(year+" : \n" + books +" pages."));
 
