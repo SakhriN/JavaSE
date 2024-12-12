@@ -17,13 +17,13 @@ public class Main {
                 System.out.println("Veuillez saisir votre age : ");
                 int age = Integer.parseInt(daredevil.nextLine());
                 if (age <0) {
-                    throw new Exception("Genre t'es pas né tu veux nous rejoindre.");
+                    throw new InvalidAgeException("Genre t'es pas né tu veux nous rejoindre.");
                 }
                 if (age==0){
-                    throw new Exception("On accepte pas les bébés.");
+                    throw new InvalidAgeException("On accepte pas les bébés.");
                 }
                 if (age>=100){
-                    throw new Exception("T'es mort, la.");
+                    throw new InvalidAgeException("T'es mort, la.");
                 }
                 etudiants.add(new Etudiant(nom, age));
                 System.out.println(etudiants);

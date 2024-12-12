@@ -22,7 +22,6 @@ public class Main {
 
         System.out.println("Longueur du mot "+ input + " = " + length +"\n");
 
-
         System.out.println("Cours consumer :");
         Consumer<String> printMessage = message->{
             System.out.println("Message : " + message);
