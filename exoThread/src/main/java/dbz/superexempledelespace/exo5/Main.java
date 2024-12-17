@@ -10,7 +10,7 @@ public class Main {
         Callable<String> integerCallable = () -> {
             for (int i = 0; i <= 10; i++) {
                 System.out.println("Résultat de la tâche " + i + " : " + (int)Math.pow(i, 2));
-                Thread.sleep(100);
+                Thread.sleep(2000);
             }
             return "fin";
         };
