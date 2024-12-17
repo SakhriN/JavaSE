@@ -1,4 +1,4 @@
-package dbz.superexempledelespace.exo2;
+package dbz.superexempledelespace.exo8;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -12,12 +12,13 @@ public class Main {
         Thread3 thread3 = new Thread3(counter);
         
         for (int i = 0; i < 10000; i++) {
-            int random = (int) Math.round(Math.random()*3);
+            int random = (int) Math.round(Math.random()*2+1);
             switch (random) {
-                case 0-> {
+
+                case 1-> {
                     thread1.call();
                 }
-                case 1-> {
+                case 2-> {
                     thread2.call();
                 }
                 default -> {

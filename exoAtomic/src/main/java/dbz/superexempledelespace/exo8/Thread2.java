@@ -1,14 +1,14 @@
-package dbz.superexempledelespace.exo2;
+package dbz.superexempledelespace.exo8;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Thread3 implements Callable<AtomicInteger> {
+public class Thread2 implements Callable<AtomicInteger> {
     private AtomicInteger counter;
     private AtomicInteger compteur;
 
 
-    public Thread3(AtomicInteger counter) {
+    public Thread2(AtomicInteger counter) {
         this.compteur = new AtomicInteger(0);
         this.counter = counter;
     }
@@ -17,7 +17,6 @@ public class Thread3 implements Callable<AtomicInteger> {
 
         counter.incrementAndGet();
         compteur.incrementAndGet();
-        System.out.println("thread3: ");
         return counter;
     }
 

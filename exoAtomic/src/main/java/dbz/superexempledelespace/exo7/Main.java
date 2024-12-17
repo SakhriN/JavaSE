@@ -1,4 +1,4 @@
-package dbz.superexempledelespace.exo1;
+package dbz.superexempledelespace.exo7;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -19,8 +19,10 @@ public class Main {
         exec.scheduleAtFixedRate(()-> {
             System.out.println("Message périodique " + atomique.incrementAndGet());
         },1,2, TimeUnit.SECONDS);
+
             Thread.sleep(10000);
             exec.shutdown();
+
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
