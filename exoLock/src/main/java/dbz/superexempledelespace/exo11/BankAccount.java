@@ -1,7 +1,5 @@
 package dbz.superexempledelespace.exo11;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class BankAccount {
     private int money;
 

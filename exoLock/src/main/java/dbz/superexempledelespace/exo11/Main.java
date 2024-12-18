@@ -1,7 +1,6 @@
 package dbz.superexempledelespace.exo11;
 
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
     private static final Object lock = new Object();

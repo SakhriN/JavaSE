@@ -19,7 +19,7 @@ public class Imprimante {
             boolean bool = lock.tryLock(random, TimeUnit.MILLISECONDS);
             if(bool){
                 System.out.println(Thread.currentThread().getName() + " a acquis le verrou et utilise l'imprimante.");
-                Thread.sleep(300);
+                Thread.sleep(500);
                 System.out.println(Thread.currentThread().getName() + "  a terminé d'utiliser l'imprimante et libère le verrou.");
                 lock.unlock();
             }else{
