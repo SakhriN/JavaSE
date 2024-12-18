@@ -29,7 +29,13 @@ public class Main {
         }
 
         for (int i = 0; i < threads.length; i++) {
-            threads[i].start();
+            try{
+                threads[i].start();
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        sharedResource.show();
     }
 }

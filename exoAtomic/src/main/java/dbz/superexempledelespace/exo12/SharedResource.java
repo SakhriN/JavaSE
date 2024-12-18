@@ -51,7 +51,7 @@ public class SharedResource {
     }
 
     public void show(){
-        System.out.println(list);
+        System.out.println("Etat final de la liste : " + list);
     }
 
 }

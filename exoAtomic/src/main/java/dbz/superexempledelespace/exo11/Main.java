@@ -28,11 +28,9 @@ public class Main {
                 });
             }
         }
-        for (int i = 0; i < threads.length-1; i++) {
-            for(int j = 0; j < 5; j++) {
-                int finalJ = j;
+        for (int i = 0; i < (threads.length); i++) {
+                int finalJ = i;
                 threads[finalJ].start();
-            }
         }
     }
 }
