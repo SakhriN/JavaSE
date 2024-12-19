@@ -1,83 +1,40 @@
 package org.example.exo18;
 
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
-        map.put("ProduitA", 50);
-        map.put("ProduitB", 30);
-        map.put("ProduitC", 20);
+        List<String> copyOnWriteList = new CopyOnWriteArrayList<>();
 
-        runTest(map);
+        runTest(copyOnWriteList);
 
-        System.out.println("Inventaire final : " + map);
+        System.out.println(copyOnWriteList);
 
     }
 
 
-    private static void runTest(ConcurrentHashMap<String, Integer> map) {
+    private static void runTest(List<String> map) {
 
-        Runnable RAcheteur = () -> {
+        Runnable runname = () -> {
             for (int i = 0; i < 10; i++) {
-                int random = (int) Math.round((Math.random() * 2));
-                switch (random) {
-                    case 0 -> {
-//                        map.merge("ProduitA",-1, Integer::sum);
-                        String key = "ProduitA";
-                        map.computeIfPresent(key, (k, v) -> v - 1);
-                        System.out.println(Thread.currentThread().getName() + " a acheté 1 unité de " + key);
-                    }
-                    case 1 -> {
-                        String key = "ProduitB";
-                        map.computeIfPresent(key, (k, v) -> v - 1);
-                        System.out.println(Thread.currentThread().getName() + " a acheté 1 unité de " + key);
-                    }
-                    default -> {
-                        String key = "ProduitC";
-                        map.computeIfPresent(key, (k, v) -> v - 1);
-                        System.out.println(Thread.currentThread().getName() + " a acheté 1 unité de " + key);
-                    }
+                        map.add(Thread.currentThread().getName()+"-Produit-"+i);
                 }
-            }
+
         };
 
-        Runnable RReapprovisionneur = () -> {
-            for (int i = 0; i < 5; i++) {
-                int random = (int) Math.round((Math.random() * 2));
-                switch (random) {
-                    case 0 -> {
-//                        map.merge("ProduitA",-1, Integer::sum);
-                        String key = "ProduitA";
-                        map.computeIfPresent("ProduitA", (k, v) -> v + 10);
-                        System.out.println(Thread.currentThread().getName() + " a réapprovisionné 10 unités de " + key);
-                    }
-                    case 1 -> {
-                        String key = "ProduitB";
-                        map.computeIfPresent(key, (k, v) -> v + 10);
-                        System.out.println(Thread.currentThread().getName() + " a réapprovisionné 10 unités de " + key);
-                    }
-                    default -> {
-                        String key = "ProduitC";
-                        map.computeIfPresent(key, (k, v) -> v + 10);
-                        System.out.println(Thread.currentThread().getName() + " a réapprovisionné 10 unités de " + key);
-                    }
-                }
-            }
-        };
+        Thread t1 = new Thread(runname,"Thread-1");
+        Thread t2 = new Thread(runname,"Thread-2");
 
-        Thread t1 = new Thread(RAcheteur);
-        Thread t2 = new Thread(RAcheteur);
-        Thread t3 = new Thread(RReapprovisionneur);
 
         try{
             t1.start();
             t2.start();
-            t3.start();
 
-            t3.join();
             t2.join();
             t1.join();
+
         }catch (InterruptedException e){
             e.printStackTrace();
         }
