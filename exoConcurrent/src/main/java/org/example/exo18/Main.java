@@ -10,10 +10,8 @@ public class Main {
 
         runTest(copyOnWriteList);
 
-        System.out.println(copyOnWriteList);
-
+        System.out.println("Liste finale des produits : " + copyOnWriteList);
     }
-
 
     private static void runTest(List<String> map) {
 
