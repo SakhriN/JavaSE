@@ -2,5 +2,5 @@ module Reports{
     requires Inventory;
     requires BookAPI;
     requires java.desktop;
-    exports report to LibraryApp;
+    exports report;
 }
