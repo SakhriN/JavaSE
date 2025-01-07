@@ -1,0 +1,1 @@
+Nombre de ligne avec Java ecrite dans fichiertexte1.txt : 4
