@@ -1,6 +1,10 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,15 +43,21 @@ public class Exo2 {
             switch (choix) {
                 case 1 -> {
                     System.out.println("Merci de choisir l'activité a ajouter : ");
+                    int nombre = 1;
                     for (String act : listeActivites) {
-                        System.out.println(act);
+                        System.out.println(nombre+". "+act);
+                        nombre++;
                     }
                     choix = sc.nextInt();
                     sc.nextLine();
-                    if (choix >= listeActivites.size() || choix < 0) {
+                    if (choix-1 >= listeActivites.size() || choix < 0) {
                         System.out.println("Annulation du choix. Retour au menu principal...");
                     } else {
-                        activite = listeActivites.get(choix);
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                        String dateLocale = formatter.format(localDateTime);
+
+                        activite = dateLocale + " : " + listeActivites.get(choix-1);
                         File file = new File(depart);
                         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
                             if (!file.exists()) {
@@ -88,7 +98,6 @@ public class Exo2 {
                             out.write(buffer, 0, bytesRead);
                         }
                     } catch (IOException e) {
-                        // e.printStackTrace();
                         System.err.println(e.getMessage());
                     }
                     System.out.println("Fin de la transformation en binaire.");
