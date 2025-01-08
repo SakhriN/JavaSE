@@ -22,9 +22,24 @@ Book book = new Book("le poker pour les nuls", "Nassim Sakhri");
             e.printStackTrace();
         }
 
+        Bibliotheque bibliotheque = new Bibliotheque();
+        bibliotheque.add(new Book("Les 3 petits canard","Bruce Banner"));
+        bibliotheque.add(new Book("Les 3 petits batard","Bruce Wayne"));
+        bibliotheque.add(new Book("Les 3 petits nanard","Bruce Willis"));
+
+
+        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("biblio.ser"))){
+            output.writeObject(bibliotheque);
+            System.out.println("Bibliotheque sérialisée.");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        try (ObjectInputStream outinput = new ObjectInputStream(new FileInputStream("biblio.ser"))){
+            Bibliotheque bibliotheque1 = (Bibliotheque) outinput.readObject();
+            System.out.println("Bibliotheque désérialisée : " + bibliotheque);
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
-
-
-
-
 }

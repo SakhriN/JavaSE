@@ -13,6 +13,10 @@ public class Book implements Serializable {
         this.author = author;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     @Override
     public String toString() {
         return "title = " + title + ", author = " + author;
