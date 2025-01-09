@@ -19,6 +19,12 @@ public class Actions {
                 bibliotheque.remove(nom);
     }
 
+    public void Demonstration(Bibliotheque bibliotheque) {
+        for(Book book : bibliotheque.getLivres()){
+            System.out.println(book);
+        }
+    }
+
     public void Serialization(Bibliotheque bibliotheque) {
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("biblio.ser"))){
             output.writeObject(bibliotheque);
@@ -31,8 +37,8 @@ public class Actions {
 
     public void DeSerialization(Bibliotheque bibliotheque) {
         try (ObjectInputStream outinput = new ObjectInputStream(new FileInputStream("biblio.ser"))){
-            Bibliotheque bibliotheque1 = (Bibliotheque) outinput.readObject();
-            System.out.println("Bibliotheque désérialisée : " + bibliotheque1);
+            bibliotheque = (Bibliotheque) outinput.readObject();
+            System.out.println("Bibliotheque désérialisée : " + bibliotheque);
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }

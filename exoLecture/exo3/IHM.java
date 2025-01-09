@@ -13,10 +13,11 @@ public class IHM {
 
         while(choix != 0){
             System.out.println("Merci de choisir l'action suivante : \n" +
-                    "1. Ajouter un livre." +
-                    "2. Supprimer un livre." +
-                    "3. Sérialiser une bibliothèque." +
-                    "4. Désérialiser une bibliothèque." +
+                    "1. Ajouter un livre.\n" +
+                    "2. Supprimer un livre.\n" +
+                    "3. Voir les livres dans la bibliothèque.\n" +
+                    "4. Sérialiser une bibliothèque.\n" +
+                    "5. Désérialiser une bibliothèque.\n" +
                     "0. Quitter.");
             choix = sc.nextInt();
             sc.nextLine();
@@ -30,8 +31,9 @@ public class IHM {
                  a.Ajouter(sc,bi);
              }
                 case 2 ->{a.Retirer(sc,bi);}
-                case 3 ->{a.Serialization(bi);}
-                case 4 ->{a.DeSerialization(bi);}
+                case 3 ->{a.Demonstration(bi);}
+                case 4 ->{a.Serialization(bi);}
+                case 5 ->{a.DeSerialization(bi);}
                 default ->{
                     System.out.println("Incorrect.");
                 }
