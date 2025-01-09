@@ -64,8 +64,9 @@ public class LectureEcriture {
     }
 
     public void EcrirePersonnage(Personnage personnage) {
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter("exo4/personnages.txt"))) {
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter("exo4/personnages.txt", true))) {
             bf.write(personnage.toString());
+            bf.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -78,17 +79,14 @@ public class LectureEcriture {
             scanner.nextLine();
         }
         return montant;
-
-
     }
 
     public void EcritureAventure(String phrase){
         try (BufferedWriter bf = new BufferedWriter(new FileWriter("exo4/Aventure.txt",true))) {
             bf.write(phrase);
+            bf.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 }

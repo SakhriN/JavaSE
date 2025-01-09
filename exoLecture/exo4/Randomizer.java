@@ -1,7 +1,6 @@
 package exo4;
 
 import java.util.List;
-import java.util.Random;
 
 public class Randomizer {
     public void RamdomizeGoodEvent(Personnage personnage, List<Evenement> evenements) {
@@ -30,17 +29,24 @@ public class Randomizer {
     }
 
     public void RamdomizeBattle(Personnage personnage, List<Demon> demons) {
-        int randomDemon = (int) Math.round(Math.random() * demons.size());
+        int randomDemon = (int) Math.round(Math.random() * (demons.size()-1));
         Demon demon = demons.get(randomDemon);
         System.out.println("Un démon apparaît : \n" + demon.toString());
+        System.out.println("***********************Début du combat :**************************");
         long originalHP = demon.getHp();
         int originalATQ = demon.getForce();
         while(personnage.getPV()>0&&demon.getHp()>0){
+            System.out.println(personnage.getNom()+" attaque " + demon.getName()+ ".");
          demon.subis(personnage.getATQ());
+            System.out.println(demon.getName()+" a perdu " + personnage.getATQ()+ " PV. Pv restants : " + demon.getHp());
          if(demon.getHp()>0){
-             personnage.perdPV(demon.attaque());
+             System.out.println(demon.getName()+" attaque " + personnage.getNom()+ ".");
+             int degats = demon.attaque();
+             personnage.perdPV(degats);
+             System.out.println(personnage.getNom()+" a perdu " + degats + " PV. Pv restants : " + personnage.getPV());
          }
         }
+        System.out.println("***********************Fin du combat :**************************");
         if(personnage.getPV()<=0){
             System.out.println(personnage.getNom()+" est mort au combat.");
         }else{
@@ -50,12 +56,11 @@ public class Randomizer {
         demon.setForce(originalATQ);
     }
 
-
-
     public void Ramdomize(Personnage personnage, List<Evenement> bonevenement,
                           List<Evenement> mauvaisevenement, List<Demon> demons, int max) {
         int originalHP = personnage.getPV();
         int originalATQ = personnage.getATQ();
+        System.out.println("-----------DEBUT DE L'AVENTURE-------------------");
         for(int i=0; i<max; i++){
             if(personnage.getPV()>0){
                 int randomizer = (int) Math.round(Math.random() * 2);
@@ -66,8 +71,10 @@ public class Randomizer {
                 }
             }else{
                 System.out.println("Vous êtes mort...");
+                break;
             }
         }
+        System.out.println("-----------FIN DE L'AVENTURE-------------------");
         personnage.setPV(originalHP);
         personnage.setATQ(originalATQ);
     }

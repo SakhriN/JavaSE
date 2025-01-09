@@ -89,7 +89,6 @@ public class Main {
                         scanner.nextLine();
                     }
                     personnagechoisi = personnages.get(choix - 1);
-                    System.out.println("Personnage choisi : " + personnagechoisi.getNom());
                 } else {
                     System.out.println("Vous ne pouvez pas choisir, il n'y a aucun personnage existant.");
                 }
@@ -98,11 +97,14 @@ public class Main {
                 System.out.println("Choix invalide.");
             }
         }
+        System.out.println("Personnage choisi : ");
+        System.out.println(personnagechoisi.toString());
 
         System.out.println("Merci de choisir la difficulté de l'aventure :\n" +
                 "1. Aventure facile (5 événements aléatoires.\n" +
                 "2. Aventure moyenne (10 événements aléatoires.\n" +
-                "3. Aventure difficile (15 événements aléatoires.");
+                "3. Aventure difficile (15 événements aléatoires.\n" +
+                "4. Aventure sans fin (jusqu'a votre mort).");
         choix = scanner.nextInt();
         scanner.nextLine();
 
@@ -110,14 +112,10 @@ public class Main {
             case 1 -> {int max =5; randomizer.Ramdomize(personnagechoisi,bonevent,mauvaisevent,demons,max);}
             case 2 -> {int max =10; randomizer.Ramdomize(personnagechoisi,bonevent,mauvaisevent,demons,max);}
             case 3 -> {int max =15; randomizer.Ramdomize(personnagechoisi,bonevent,mauvaisevent,demons,max);}
+            case 4 -> {int max =999999; randomizer.Ramdomize(personnagechoisi,bonevent,mauvaisevent,demons,max);}
             default -> {
                 System.out.println("VOUS ETES MORT !!!!");
             }
         }
-
-
-
-
-
     }
 }
